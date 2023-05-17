@@ -1,18 +1,28 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        valids = {
-            "{" : "}",
-            "[" : "]",
-            "(" : ")"
+        valid = {
+            ")" : "(",
+            "}" : "{",
+            "]" : "["
         }
-        if len(s) % 2 == 1:
+        stack = []
+
+        for char in s:
+            if char in valid:
+                if stack and stack[-1] == valid[char]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(char)
+        if not stack:
+            return True
+        else:
             return False
-        sList = list(s)
-        index = 0 
-        for item in sList:
-            if item in valids:
+
+
+
                 
-            index += 1
                 
         
 
